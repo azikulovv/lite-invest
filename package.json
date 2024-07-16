@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "lite-invest",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "nuxt": "^3.12.3",
     "vue": "latest"
   }
