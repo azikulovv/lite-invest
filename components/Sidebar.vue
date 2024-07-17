@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-[340px] py-[38px] shadow-md h-screen overflow-y-auto">
+  <div class="shrink-0 flex flex-col w-[340px] py-[38px] shadow-md h-screen overflow-y-auto">
     <div class="mx-[20px] w-[200px] h-[32px]">
       <NuxtIcon name="logotypes/lite-invest" filled class="grid place-items-center w-full h-full" />
     </div>

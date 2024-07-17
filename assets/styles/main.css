@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.nuxt-icon {
+  @apply grid place-items-center;
+}
+
+.nuxt-icon svg {
+  @apply w-full h-full mb-0 !important;
+}
