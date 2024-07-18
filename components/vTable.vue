@@ -2,7 +2,7 @@
   <div
     class="mt-[28px] pb-[20px] px-[20px] bg-white shadow-[0_0_40px] shadow-[rgb(0,0,0,0.06)] rounded-[24px]"
   >
-    <div class="grid grid-cols-7 text-left p-[20px]">
+    <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_50px] text-left p-[20px]">
       <span
         class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#9EA1B0]"
       >
@@ -43,7 +43,7 @@
     <div
       class="flex flex-col gap-y-[20px] rounded-[16px] bg-[#FBFBFB] p-[20px] border-2 border-[#F4F4F4] overflow-hidden"
     >
-      <div class="grid grid-cols-7 text-left">
+      <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_50px] text-left">
         <span
           class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#031138]"
         >
@@ -81,7 +81,7 @@
         </span>
       </div>
 
-      <div class="grid grid-cols-7 text-left">
+      <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_50px] text-left">
         <span
           class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#031138]"
         >
@@ -119,7 +119,7 @@
         </span>
       </div>
 
-      <div class="grid grid-cols-7 text-left">
+      <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_50px] text-left">
         <span
           class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#031138]"
         >
@@ -159,19 +159,20 @@
     </div>
 
     <div
-      class="flex items-center justify-center p-[20px] bg-[#FBFBFB] border-2 border-[#F4F4F4] rounded-[16px] mt-[16px]"
+      class="flex gap-x-[4px] items-center justify-center p-[20px] bg-[#FBFBFB] border-2 border-[#F4F4F4] rounded-[16px] mt-[16px]"
     >
       <span
         class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#9EA1B0]"
       >
         Комиссия:
       </span>
+
       <span
         class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#031138]"
       >
         334,43 ₽
       </span>
-      •
+      <span class="mx-[4px]"> • </span>
       <span
         class="font-[Manrope] font-normal text-[20px] leading-[20px] -tracking-[2%] text-[#9EA1B0]"
       >
