@@ -6,59 +6,79 @@
       class="w-[480px] h-[480px] rounded-full aspect-square bg-[rgb(244,244,244)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-y-[24px] items-center justify-center"
     >
       <p class="text-[#9EA1B0] font-[Manrope] font-medium text-[20px] leading-[16px] text-center">
-        Общая сумма
+        {{ title }}
       </p>
 
       <p class="text-[#031138] font-[Manrope] text-[56px] leading-[32px] text-center">
-        1 200 350 ₽
+        {{ amount }}
       </p>
     </div>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, onMounted, ref, type PropType } from "vue";
+
+export default defineComponent({
   name: "PieChart",
-  data() {
-    return {
-      chartData: [58, 0.5, 25, 0.5, 17, 0.5],
-      chartLabels: ["акции", "фьючерсы", "валюта"],
-      chartColors: ["#0D4AF1", "#fff", "#EC4899", "#fff", "#1DCCAC", "#fff"],
-      width: 600,
-      height: 600,
-    };
+  props: {
+    chart: {
+      required: true,
+      type: Object as PropType<{
+        data: number[];
+        colors: string[];
+      }>,
+    },
+    width: {
+      type: Number,
+      default: 600,
+    },
+    height: {
+      type: Number,
+      default: 600,
+    },
+    title: {
+      type: String,
+      default: "title",
+    },
+    amount: {
+      type: String,
+      default: "amount",
+    },
   },
-  mounted() {
-    this.outerRadius = Math.min(this.width, this.height) / 2; // Outer radius equals half of the canvas size
-    this.innerRadius = this.outerRadius * 0.8; // Inner radius is 60% of the outer radius
-    this.drawChart();
-  },
-  methods: {
-    drawChart() {
-      const canvas = this.$refs.canvas;
-      const ctx = canvas.getContext("2d");
-      const totalValue = this.chartData.reduce((acc, val) => acc + val, 0);
-      const centerX = this.width / 2;
-      const centerY = this.height / 2;
+  setup(props) {
+    const canvas = ref<HTMLCanvasElement | null>(null);
+
+    const outerRadius = Math.min(props.width, props.height) / 2;
+    const innerRadius = outerRadius * 0.8;
+
+    const drawChart = () => {
+      if (!canvas.value) return;
+      const ctx = canvas.value.getContext("2d");
+      if (!ctx) return;
+
+      const totalValue = props.chart.data.reduce((acc, val) => acc + val, 0);
+      const centerX = props.width / 2;
+      const centerY = props.height / 2;
 
       let startAngle = -Math.PI / 2; // Starting from top (12 o'clock position)
 
-      this.chartData.forEach((value, index) => {
+      props.chart.data.forEach((value, index) => {
         const sliceAngle = (2 * Math.PI * value) / totalValue;
         const endAngle = startAngle + sliceAngle;
 
         // Draw outer slice
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, this.outerRadius, startAngle, endAngle);
+        ctx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
         ctx.closePath();
-        ctx.fillStyle = this.chartColors[index];
+        ctx.fillStyle = props.chart.colors[index];
         ctx.fill();
 
         // Draw inner slice
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, this.innerRadius, startAngle, endAngle);
+        ctx.arc(centerX, centerY, innerRadius, startAngle, endAngle);
         ctx.closePath();
         ctx.fillStyle = "#ffffff"; // Inner circle color
         ctx.fill();
@@ -66,7 +86,15 @@ export default {
         // Updating startAngle for the next slice
         startAngle = endAngle;
       });
-    },
+    };
+
+    onMounted(() => {
+      drawChart();
+    });
+
+    return {
+      canvas,
+    };
   },
-};
+});
 </script>

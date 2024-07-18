@@ -20,16 +20,6 @@ const state = ref({
       price: "169 226, 81 ₽",
     },
   ],
-  datacollection: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "My Dataset",
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"],
-        data: [12, 19, 3, 5, 2, 3],
-      },
-    ],
-  },
 });
 </script>
 
@@ -104,7 +94,16 @@ const state = ref({
         <div
           class="p-[24px] flex items-center justify-center bg-[#FBFBFB] border-2 border-[#F4F4F4] rounded-[20px]"
         >
-          <pie-chart></pie-chart>
+          <pie-chart
+            :width="600"
+            :height="600"
+            title="Общая сумма"
+            amount="1 200 350 ₽"
+            :chart="{
+              data: [58, 0.5, 25, 0.5, 17, 0.5],
+              colors: ['#0D4AF1', '#fff', '#EC4899', '#fff', '#1DCCAC', '#fff'],
+            }"
+          />
         </div>
 
         <div class="flex flex-col gap-y-[16px]">
