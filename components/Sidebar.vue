@@ -7,7 +7,7 @@
     <NuxtLink href="#" class="mx-[20px] mt-[52px] flex items-center gap-x-[8px]">
       <img
         class="rounded-[8px] w-[32px] h-[32px]"
-        src="~/assets/images/logotypes/moex.png"
+        src="@/assets/images/logotypes/moex.png"
         alt=""
       />
       <span
